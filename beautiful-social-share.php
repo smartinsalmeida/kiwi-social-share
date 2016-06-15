@@ -11,6 +11,10 @@
  * Domain Path: /languages/
  */
 
+/**
+ * @TODO: Save Structure version variable to the DB; useful for upgrades
+ */
+
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;

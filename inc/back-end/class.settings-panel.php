@@ -154,13 +154,13 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 				'id'      => 'general-settings-order',
 				'title'   => '',
 				'std'     => array(
-					'kiwi-enable-reddit',
-					'kiwi-enable-linkedin',
-					'kiwi-enable-pinterest',
-					'kiwi-enable-twitter',
 					'kiwi-enable-facebook',
-					'kiwi-enable-email',
+					'kiwi-enable-twitter',
 					'kiwi-enable-google-plus',
+					'kiwi-enable-pinterest',
+					'kiwi-enable-linkedin',
+					'kiwi-enable-reddit',
+					'kiwi-enable-email',
 				),
 				'options' => array(
 

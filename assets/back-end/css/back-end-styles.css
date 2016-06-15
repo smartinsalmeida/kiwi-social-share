@@ -377,6 +377,10 @@ fieldset.kiwi-checkbox-sortable-wrapper {
 	        display: inline-block;
 	        position: relative;
 	        top: 7px;
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+	         opacity: .5;
+
         }
             .kiwi-sortable-form-label span.facebook { background-image: url('../images/fb.png'); }
             .kiwi-sortable-form-label span.twitter { background-image: url('../images/twitter.png'); }
