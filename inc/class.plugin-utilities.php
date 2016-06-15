@@ -1,6 +1,7 @@
 <?php
 
-class Kiwi_Plugin_Utilities {
+class Kiwi_Plugin_Utilities
+{
 
     public $settings_field = 'kiwi_settings';
 
@@ -17,7 +18,7 @@ class Kiwi_Plugin_Utilities {
 
         foreach ((array)$wp_settings_sections[$page] as $section) {
             if ($section['title'])
-                echo "<h3>{$section['title']}</h3>\n";
+                echo "<h3>{$section['title']}</h3>" . PHP_EOL;
 
             if ($section['callback'])
                 call_user_func($section['callback'], $section);
@@ -25,11 +26,8 @@ class Kiwi_Plugin_Utilities {
             if (!isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section['id']]))
                 continue;
 
-            //MY WRAPPING NEEDS TO START HERE
-            //echo '<table class="form-table">';
             $this->do_settings_fields($page, $section['id']);
-            //echo '</table>';
-            //AND END HERE!
+
         }
     }
 
@@ -45,27 +43,12 @@ class Kiwi_Plugin_Utilities {
             return;
 
         foreach ((array)$wp_settings_fields[$page][$section] as $field) {
-            $class = '';
-
-            if (!empty($field['args']['class'])) {
-                $class = ' class="' . esc_attr($field['args']['class']) . '"';
+            if (!empty($field['args']['label_for'])) {
+                echo '<label for="' . esc_attr($field['args']['label_for']) . '">' . $field['title'] . '</label>';
             }
 
-
-            //echo "<tr{$class}>";
-
-            if (!empty($field['args']['label_for'])) {
-                //echo '<th scope="row"><label for="' . esc_attr( $field['args']['label_for'] ) . '">' . $field['title'] . '</label></th>';
-                echo '<label for="' . esc_attr($field['args']['label_for']) . '">' . $field['title'] . '</label>';
-            } /* else if( $field['args']['type'] !== 'heading' ) { // added an extra check to make sure field type is not also a heading; because using 'title' argument causes it to be output twice
-				//echo '<th scope="row">' . $field['title'] . '</th>';
-				echo '<div class="row">' . $field['title'] . '</div>';
-			} */
-
-            //echo '<td>';
             call_user_func($field['callback'], $field['args']);
-            //echo '</td>';
-            //echo '</tr>';
+
         }
     }
 
@@ -131,14 +114,12 @@ class Kiwi_Plugin_Utilities {
     public function render_radio_field($args)
     {
 
-        $output = '<fieldset>';
+        $output = '<fieldset class="kiwi-radio-field-wrapper">';
 
         foreach ($args['options'] as $array_key => $array_value) {
 
-            $output .= '<label for="'. esc_attr ( $array_key ).'">';
-                $output .= '<input id="'.esc_attr( $array_key ).'" type="radio" name="' . $this->settings_field . '[' . $args['id'] . ']' . '" value="' . esc_attr($array_key) . '"' . checked($this->get_option_value($args['id']), $array_key, false) . '>';
-            $output .= '<span>' . $array_value . '</span>';
-            $output .= '</label><br />';
+            $output .= '<input id="' . esc_attr($array_key) . '" type="radio" name="' . $this->settings_field . '[' . $args['id'] . ']' . '" value="' . esc_attr($array_key) . '"' . checked($this->get_option_value($args['id']), $array_key, false) . '>';
+            $output .= '<label for="' . esc_attr($array_key) . '">'.$array_value.'</label>';
         }
 
         $output .= '</fieldset>';
@@ -173,21 +154,21 @@ class Kiwi_Plugin_Utilities {
 
         foreach ($args['options'] as $array_key => $array_value) {
 
-            if( checked($checkAgainst, $array_key, false) ) {
+            if (checked($checkAgainst, $array_key, false)) {
                 $field_class = ' kiwi-active-field';
             } else {
                 $field_class = '';
             }
 
-            $output .= '<li class="kiwi-radio-img-field '.esc_attr( $array_key ). esc_attr( $field_class ) .'">';
-                $output .= '<div class="kiwi-field-helper-radio-img" data-click-to="' . esc_attr( $array_key ) . '" >';
-                    $output .= '<img class="kiwi-background-image" src="' . $array_value['img'] . '" />';
+            $output .= '<li class="kiwi-radio-img-field ' . esc_attr($array_key) . esc_attr($field_class) . '">';
+            $output .= '<label for="' . esc_attr($array_key) . '"  class="kiwi-field-helper-radio-img" data-click-to="' . esc_attr($array_key) . '" >';
+            $output .= '<img class="kiwi-background-image" src="' . $array_value['img'] . '" />';
 
-                    $output .= '<input class="kiwi-hidden-input" type="radio" id="' . esc_attr($array_key) . '" name="' . $this->settings_field . '[' . $args['id'] . ']' . '" value="' . esc_attr($array_key) . '"' . checked($checkAgainst, $array_key, false) . '>';
-                    $output .= '<label for="' . esc_attr($array_key) . '" class="kiwi-form-label radio-img">' . esc_html($array_value['title']) . '</label>';
+            $output .= '<input class="kiwi-hidden-input" type="radio" id="' . esc_attr($array_key) . '" name="' . $this->settings_field . '[' . $args['id'] . ']' . '" value="' . esc_attr($array_key) . '"' . checked($checkAgainst, $array_key, false) . '>';
+            $output .= '<div class="kiwi-form-label radio-img">' . esc_html($array_value['title']) . '</div>';
 
-                    $output .= '<div class="kiwi-field-description img-radio">' . esc_html($array_value['desc']) . '</div>';
-                $output .= '</div>';
+            $output .= '<div class="kiwi-field-description img-radio">' . esc_html($array_value['desc']) . '</div>';
+            $output .= '</label>';
             $output .= '</li>';
 
         }
@@ -248,52 +229,45 @@ class Kiwi_Plugin_Utilities {
      *
      * @since   1.0.0
      *
-     * @TODO: aici ar trebui schimbata logica. sortable/draggable ar trebui sa vina sub forma unui singur array
-     *
-     *    array(
-     *        'id' => 'bla',
-     *        'type' => 'sortable-draggable',
-     *        'std'   => 'default_order_they_should_be_in',
-     *        'options' => array(
-     * array(
-     *                    'id' => 'kiwi_enable_facebook',
-     *
-     *                )
-     *            )
-     *   )
-     *
      *
      */
     public function render_sortable_draggable_field($args)
     {
+        $output = '';
 
+        //overwrite $args['order']
+        if (!empty($this->get_option_value('general-settings-order'))) {
 
-        // Set default value to $args['std']
-        if (!isset($args['std'])) {
-            $args['std'] = 0;
+            // convert the string to an array
+            $saved_values = $this->get_option_value('general-settings-order');
+
+            $order_preload = explode(',', $saved_values);
+
+            $args['order'] = $order_preload;
         }
 
-        // check to see if there's a value saved to the db
-        // otherwise apply default value specified
-        if (!empty($this->get_option_value($args['id']))) {
-            $checkAgainst = $this->get_option_value($args['id']);
-        } else {
-            $checkAgainst = $args['std'];
+        // arrange the sortable fields in desired order; by order saved/defined as default
+        $args['options'] = array_merge(array_flip($args['order']), $args['options']);
+
+        // loop through the options array
+        foreach ($args['options'] as $array_key => $array_value) {
+
+            // start render
+            $output .= '<fieldset class="kiwi-field-wrapper kiwi-checkbox-sortable">';
+
+            $output .= '<div class="kiwi-sortable-helper"></div>';
+            $output .= '<div class="kiwi-sortable-form-label">' . $array_value['title'] . '</div>';
+
+            $output .= '<label class="switch" for="' . esc_attr($array_value['id']) . '">';
+            $output .= '<input id="' . esc_attr($array_value['id']) . '" class="kiwi-switch-input" type="checkbox" name="' . esc_attr($this->settings_field) . '[' . esc_attr($array_value['id']) . ']' . '" value="1"' . checked($this->get_option_value($array_value['id']), 1, false) . '>';
+            $output .= '<span class="kiwi-switch-label" data-on="' . __('On', 'kiwi-social-share') . '" data-off="' . __('Off', 'kiwi-social-share') . '"></span>';
+            $output .= '<span class="kiwi-switch-handle"></span>';
+            $output .= '</label>';
+
+            $output .= '</fieldset>';
         }
 
-        // start render
-        $output = '<fieldset class="kiwi-field-wrapper checkbox-sortable">';
-
-        $output .= '<div class="kiwi-sortable-helper"></div>';
-        $output .= '<div class="kiwi-form-label">' . $args['title'] . '</div>';
-
-        $output .= '<label class="switch" for="' . esc_attr($args['id']) . '">';
-        $output .= '<input id="' . esc_attr($args['id']) . '" class="switch-input" type="checkbox" name="' . esc_attr($this->settings_field) . '[' . esc_attr($args['id']) . ']' . '" value="1"' . checked($checkAgainst, 1, false) . '>';
-        $output .= '<span class="switch-label" data-on="' . __('On', 'kiwi-social-share') . '" data-off="' . __('Off', 'kiwi-social-share') . '"></span>';
-        $output .= '<span class="switch-handle"></span>';
-        $output .= '</label>';
-
-        $output .= '</fieldset>';
+        $output .= '<input type="hidden" class="widefat" id="sortable-order-' . esc_attr($args['id']) . '" name="' . $this->settings_field . '[' . esc_attr($args['id']) . ']' . '">';
 
         return $output;
     }
@@ -331,9 +305,9 @@ class Kiwi_Plugin_Utilities {
         $output .= '<span class="kiwi-form-label">' . $args['title'] . '</span>';
 
         $output .= '<label class="switch" for="' . esc_attr($args['id']) . '">';
-        $output .= '<input id="' . esc_attr($args['id']) . '" class="switch-input" type="checkbox" name="' . esc_attr($this->settings_field) . '[' . esc_attr($args['id']) . ']' . '" value="1"' . checked($checkAgainst, 1, false) . '>';
-        $output .= '<span class="switch-label" data-on="' . __('On', 'kiwi-social-share') . '" data-off="' . __('Off', 'kiwi-social-share') . '"></span>';
-        $output .= '<span class="switch-handle"></span>';
+        $output .= '<input id="' . esc_attr($args['id']) . '" class="kiwi-switch-input" type="checkbox" name="' . esc_attr($this->settings_field) . '[' . esc_attr($args['id']) . ']' . '" value="1"' . checked($checkAgainst, 1, false) . '>';
+        $output .= '<span class="kiwi-switch-label" data-on="' . __('On', 'kiwi-social-share') . '" data-off="' . __('Off', 'kiwi-social-share') . '"></span>';
+        $output .= '<span class="kiwi-switch-handle"></span>';
         $output .= '</label>';
 
         $output .= '</fieldset>';
@@ -392,6 +366,7 @@ class Kiwi_Plugin_Utilities {
         return $output;
 
     }
+
 
     public function render_hidden_field($args)
     {

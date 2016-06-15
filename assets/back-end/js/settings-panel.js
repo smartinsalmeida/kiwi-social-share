@@ -10,17 +10,17 @@
         if (typeof $.fn.sortable !== 'undefined') {
 
             $('.kiwi-form-wrapper-left').sortable({
-                items: '.kiwi-field-wrapper.checkbox-sortable',
-                handle: '.kiwi-sortable-helper',
+                items: '.kiwi-field-wrapper.kiwi-checkbox-sortable',
+                //handle: '.kiwi-sortable-helper',
                 containment: 'parent',
                 cursor: 'move',
-                placeholder: 'checkbox-sortable-placeholder',
+                placeholder: 'kiwi-checkbox-sortable-placeholder',
                 update: function() {
-                    if( $('.kiwi-form-wrapper-left .checkbox-sortable').length && $('#general_settings_order').length ){
+                    if( $('.kiwi-form-wrapper-left .kiwi-checkbox-sortable').length && $('#general-settings-order').length ){
 
                         var order_update = '';
 
-                        $(".checkbox-sortable .switch-input").each(function(){
+                        $(".kiwi-checkbox-sortable .kiwi-switch-input").each(function(){
                             var id = $(this).attr('id');
                             if(order_update == '' ) {
                                 order_update = id;
@@ -29,7 +29,7 @@
                             }
                         });
                         // rewrite the value of the order input field
-                        $('.kiwi-form-wrapper-left #general_settings_order').val(order_update);
+                        $('.kiwi-form-wrapper-left #general-settings-order').val(order_update);
                     }
                 }
             });
@@ -39,7 +39,7 @@
         function kiwi_set_radio_img_button() {
 
             $('.kiwi-field-helper-radio-img').on( 'click', function(e){
-                
+
                 var inputID = $(this).data('click-to');
 
                 // now go ahead and move the click to the radio button
@@ -57,8 +57,6 @@
                         $(this).parent().parent().removeClass('kiwi-active-field');
                     }
                 });
-
-
             });
         }
 
