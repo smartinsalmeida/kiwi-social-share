@@ -11,39 +11,38 @@
  * Domain Path: /languages/
  */
 
-
-
 /**
- * @TODO: - sanitizare a tuturor functiilor de randare
- * @TODO: - rezolva cu ID-ul duplicat al field-urilor
- * 		o idee ar fi ca cheia array-ului, sa fie doar ID-ul field-ului; practic
- * 	'cheie' => array() => array() (fara cheie explicit)
- * @TODO: - re-organizare fisiere si comentarii
- * @TODO: - re-organizare CSS si comentarii
- * @TODO: - uninstall.php ( pt. dezinstalarea plugin-ului si stergerea datelor din DB atunci cand este dezinstalat )
- * @TODO: - functie care sa parcurga std-ul si sa adauge valorile alea default in DB
- * 	https://github.com/leemason/NHP-Theme-Options-Framework/blob/master/options/options.php#L187
- * @TODO: - hook-uri pt. activate/deactivate plugin (aici intra si uninstall.php);
  * @TODO: - trebuie facute pop-up-uri pt. social icons (.data-popup)
  */
 
+// If this file is called directly, abort.
+if (!defined('WPINC')) {
+    die;
+}
+
+//======================================================================
+// 		CONSTANTS
+//======================================================================
 
 define('KIWI__MINIMUM_WP_VERSION', '4.5.2');
 define('KIWI__STRUCTURE_VERSION', '1.0.0');
 define('KIWI__PLUGIN_VERSION', '1.0.0');
 
-define('KIWI__PLUGINS_URL', plugin_dir_url(__FILE__) );
-define('KIWI__PLUGINS_PATH', plugin_dir_path(__FILE__) );
+define('KIWI__PLUGINS_URL', plugin_dir_url(__FILE__));
+define('KIWI__PLUGINS_PATH', plugin_dir_path(__FILE__));
+
+//======================================================================
+// 		INCLUDES
+//======================================================================
 
 require KIWI__PLUGINS_PATH . 'inc/class.plugin-utilities.php';
 require KIWI__PLUGINS_PATH . 'inc/front-end/class.render-share-bar.php';
 require KIWI__PLUGINS_PATH . 'inc/back-end/class.settings-panel.php';
 
-/*****************************************************************
- *                                                                *
- *     JETPACK: Disable crap                                      *
- *                                                                *
- ******************************************************************/
-if( !has_filter( 'jetpack_enable_open_graph', '__return_false' ) ) {
-    add_filter( 'jetpack_enable_open_graph', '__return_false' ); // this filter usually gets added by Yoast SEO
+//======================================================================
+// 		   JETPACK: Disable crap
+//======================================================================
+
+if (!has_filter('jetpack_enable_open_graph', '__return_false')) {
+    add_filter('jetpack_enable_open_graph', '__return_false'); // this filter usually gets added by Yoast SEO
 }
