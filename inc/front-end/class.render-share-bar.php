@@ -25,7 +25,7 @@ class Kiwi_Render_Share_Bar extends Kiwi_Plugin_Utilities {
 	}
 
 	public function front_end_register_scripts() {
-		
+
 		wp_register_script( 'kiwi-front-end-scripts', KIWI__PLUGINS_URL . 'assets/front-end/js/front-end-scripts.js', array('jquery'), KIWI__PLUGIN_VERSION, true);
 		wp_enqueue_script( 'kiwi-front-end-scripts' );
 	}
@@ -411,11 +411,12 @@ class Kiwi_Render_Share_Bar extends Kiwi_Plugin_Utilities {
 
 					if ( has_post_thumbnail( $info['postID'] ) ) {
 
+
 						// If nothing else is defined, let's use the post Thumbnail as long as we have the URL cached
-						$og_image = get_post_thumbnail_id( $info['postID'] );
+						$og_image = wp_get_attachment_image_src ( get_post_thumbnail_id( $info['postID'] ), 'full' );
 
 						if ( $og_image ) {
-							$info['header_output'] .= PHP_EOL . '<meta property="og:image" content="' . $og_image . '" />';
+							$info['header_output'] .= PHP_EOL . '<meta property="og:image" content="' . esc_url( $og_image[0] ) . '" />';
 						}
 
 					} else {

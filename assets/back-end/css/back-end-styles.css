@@ -362,9 +362,30 @@ fieldset.kiwi-checkbox-sortable-wrapper {
         margin-right: 0;
         position: relative;
         float: left;
-        top: 15px;
+        top: 5px;
         left: 15px;
+	    font-weight: 600;
+	    font-size: 14px;
     }
+
+         .kiwi-sortable-form-label span {
+	        background-size: 26px 26px;
+	        background-position: center center;
+	        width: 26px;
+	        height: 26px;
+	        margin-right: 10px;
+	        display: inline-block;
+	        position: relative;
+	        top: 7px;
+        }
+            .kiwi-sortable-form-label span.facebook { background-image: url('../images/fb.png'); }
+            .kiwi-sortable-form-label span.twitter { background-image: url('../images/twitter.png'); }
+            .kiwi-sortable-form-label span.linkedin { background-image: url('../images/linkedin.png'); }
+            .kiwi-sortable-form-label span.pinterest { background-image: url('../images/pinterest.png'); }
+            .kiwi-sortable-form-label span.reddit { background-image: url('../images/reddit.png'); }
+            .kiwi-sortable-form-label span.email { background-image: url('../images/email.png'); }
+            .kiwi-sortable-form-label span.google.plus { background-image: url('../images/google+.png'); }
+
 
     .kiwi-checkbox-sortable-placeholder {
         height: 50px;
@@ -401,10 +422,8 @@ fieldset.kiwi-checkbox-sortable-wrapper {
 **/
 
 .kiwi-field-wrapper .kiwi-radio-img-field img {
-    width: 100%;
     border-radius: 5px;
 }
-
 
 /* Field Type: Radio - Image */
 .kiwi-radio-img-wrapper input[type="radio"] {

@@ -235,7 +235,7 @@ class Kiwi_Plugin_Utilities {
 			$output .= '<fieldset class="kiwi-checkbox-sortable-wrapper">';
 
 			$output .= '<div class="kiwi-sortable-helper"></div>';
-			$output .= '<div class="kiwi-sortable-form-label">' . esc_html( $array_value['title'] ) . '</div>';
+			$output .= '<div class="kiwi-sortable-form-label"><span class="' . strtolower( esc_html( $array_value['title'] ) ) . '"></span>' . esc_html( $array_value['title'] ) . '</div>';
 
 			$output .= '<label class="kiwi-switch" for="' . esc_attr( $array_value['id'] ) . '">';
 			$output .= '<input id="' . esc_attr( $array_value['id'] ) . '" class="kiwi-switch-input" type="checkbox" name="' . esc_attr( $this->settings_field ) . '[' . esc_attr( $array_value['id'] ) . ']' . '" value="1"' . checked( $this->get_option_value( $array_value['id'] ), 1, false ) . '>';
@@ -337,7 +337,7 @@ class Kiwi_Plugin_Utilities {
 	}
 
 	/**
-	 * Function to generate hidden input 
+	 * Function to generate hidden input
 	 *
 	 * @param $args
 	 *

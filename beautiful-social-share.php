@@ -11,10 +11,6 @@
  * Domain Path: /languages/
  */
 
-/**
- * @TODO: - trebuie facute pop-up-uri pt. social icons (.data-popup)
- */
-
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;

@@ -181,7 +181,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 					'kiwi-enable-pinterest' => array(
 						'title' => __( ' Pinterest', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-						'std'   => 0,
+						'std'   => 1,
 						'id'    => 'kiwi-enable-pinterest',
 					),
 
@@ -195,21 +195,21 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 					'kiwi-enable-reddit' => array(
 						'title' => __( 'Reddit', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-						'std'   => 0,  // disabled
+						'std'   => 1,  
 						'id'    => 'kiwi-enable-reddit',
 					),
 
 					'kiwi-enable-google-plus' => array(
 						'title' => __( ' Google Plus', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-						'std'   => 0,  // disabled
+						'std'   => 1,  
 						'id'    => 'kiwi-enable-google-plus',
 					),
 
 					'kiwi-enable-email' => array(
 						'title' => __( ' Email', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-						'std'   => 0, // disabled
+						'std'   => 1, 
 						'id'    => 'kiwi-enable-email',
 					),
 
@@ -231,14 +231,14 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			array(
 				'title' => __( ' Posts', 'kiwi-social-share' ),
 				'type'  => 'toggle',
-				'std'   => 1, // disabled
+				'std'   => 1, 
 				'id'    => 'kiwi-enable-on-posts',
 			),
 
 			array(
 				'title' => __( ' Pages', 'kiwi-social-share' ),
 				'type'  => 'toggle',
-				'std'   => 0, // disabled
+				'std'   => 0, 
 				'id'    => 'kiwi-enable-on-pages',
 			),
 
@@ -263,7 +263,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			),
 
 			array(
-				'title'      => __( 'Display sizes', 'kiwi-social-share' ),
+				'title'      => __( 'Display Sizes', 'kiwi-social-share' ),
 				'sub-title'  => __( 'comes in all shapes & sizes.', 'kiwi-social-share' ),
 				'nice-title' => 1,
 				'type'       => 'heading',
@@ -401,7 +401,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 		<div class='wrap kiwi-wrap'>
 
 			<h1><?php _e( 'Kiwi Social Sharing', 'kiwi-social-share' ); ?></h1>
-			<p class="kiwi-about-text"><?php echo __( 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ', 'kiwi-social-share' ); ?>
+			<p class="kiwi-about-text"><?php echo __( 'Thank you for choosing Kiwi Social Share. An easy to use social button share plugin with a beautiful UI. We really hope you\'ll enjoy using it', 'kiwi-social-share' ); ?>
 				.</p>
 			<div class='kiwi-badge'>
 				<span><?php echo __( 'Version: ', 'kiwi-social-share' ) . KIWI__PLUGIN_VERSION; ?></span></div>
