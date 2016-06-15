@@ -427,8 +427,11 @@ fieldset.kiwi-checkbox-sortable-wrapper {
 
 .kiwi-field-wrapper .kiwi-radio-img-field img {
     border-radius: 5px;
+<<<<<<< HEAD
     max-width: 100%;
     height; auto;
+=======
+>>>>>>> origin/master
 }
 
 /* Field Type: Radio - Image */
