@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Kiwi Social
+ * Plugin Name: Kiwi Social Sharing WordPress Plugin
  * Plugin URI: https://www.machothemes.com/plugins/kiwi-social-sharing/
- * Description: Really Beautiful & Simple Social Sharing buttons. Also comes pre-package with a social sharing widget which you can use throughout your website.
+ * Description: Really beautiful & simple social sharing buttons. Simplicity & speed is key with this social sharing plugin.
  * Author: Macho Themes
  * Author URI: https://www.machothemes.com/
  * Version: 1.0.0
@@ -11,27 +11,38 @@
  * Domain Path: /languages/
  */
 
+/**
+ * @TODO: Save Structure version variable to the DB; useful for upgrades
+ */
+
+// If this file is called directly, abort.
+if (!defined('WPINC')) {
+    die;
+}
+
+//======================================================================
+// 		CONSTANTS
+//======================================================================
 
 define('KIWI__MINIMUM_WP_VERSION', '4.5.2');
 define('KIWI__STRUCTURE_VERSION', '1.0.0');
 define('KIWI__PLUGIN_VERSION', '1.0.0');
 
-define('KIWI__PLUGINS_URL', plugin_dir_url(__FILE__) );
+define('KIWI__PLUGINS_URL', plugin_dir_url(__FILE__));
+define('KIWI__PLUGINS_PATH', plugin_dir_path(__FILE__));
 
-require plugin_dir_path(__FILE__) . 'admin/settings-panel.php';
+//======================================================================
+// 		INCLUDES
+//======================================================================
 
-/*****************************************************************
- *                                                                *
- *     JETPACK: Disable crap                                      *
- *                                                                *
- ******************************************************************/
-if( !has_filter( 'jetpack_enable_open_graph', '__return_false' ) ) {
-    add_filter('jetpack_enable_open_graph', '__return_false'); // this filter usually gets added by Yoast
+require KIWI__PLUGINS_PATH . 'inc/class.plugin-utilities.php';
+require KIWI__PLUGINS_PATH . 'inc/front-end/class.render-share-bar.php';
+require KIWI__PLUGINS_PATH . 'inc/back-end/class.settings-panel.php';
+
+//======================================================================
+// 		   JETPACK: Disable crap
+//======================================================================
+
+if (!has_filter('jetpack_enable_open_graph', '__return_false')) {
+    add_filter('jetpack_enable_open_graph', '__return_false'); // this filter usually gets added by Yoast SEO
 }
-
-
-
-/**
- * Let's run this puppy
- */
-$kiwi_settings_panel = kiwi_options_panel::singleton();
