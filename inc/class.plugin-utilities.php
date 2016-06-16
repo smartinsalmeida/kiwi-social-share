@@ -231,14 +231,21 @@ class Kiwi_Plugin_Utilities {
 		// loop through the options array
 		foreach ( $args['options'] as $array_key => $array_value ) {
 
+			// add class "kiwi-sortable-disabled" if it's unchecked
+			$checked = checked( $this->get_option_value( $array_value['id'] ), 1, false );
+
 			// start render
-			$output .= '<fieldset class="kiwi-checkbox-sortable-wrapper">';
+			if ( $checked == '' ) { // checking to see if toggle is active or not; if it's not, output the disabled class so it has a lowered opacity
+				$output .= '<fieldset class="kiwi-checkbox-sortable-wrapper kiwi-sortable-disabled">';
+			} else {
+				$output .= '<fieldset class="kiwi-checkbox-sortable-wrapper">';
+			}
 
 			$output .= '<div class="kiwi-sortable-helper"></div>';
-			$output .= '<div class="kiwi-sortable-form-label"><span class="' . strtolower( esc_html( $array_value['title'] ) ) . '"></span>' . esc_html( $array_value['title'] ) . '</div>';
+			$output .= '<div class="kiwi-sortable-form-label"><span class="' . strtolower( esc_html( $array_value['title'] ) ) . '"><img src="'.esc_url( $array_value['icon'] ).'" /></span>' . esc_html( $array_value['title'] ) . '</div>';
 
 			$output .= '<label class="kiwi-switch" for="' . esc_attr( $array_value['id'] ) . '">';
-			$output .= '<input id="' . esc_attr( $array_value['id'] ) . '" class="kiwi-switch-input" type="checkbox" name="' . esc_attr( $this->settings_field ) . '[' . esc_attr( $array_value['id'] ) . ']' . '" value="1"' . checked( $this->get_option_value( $array_value['id'] ), 1, false ) . '>';
+			$output .= '<input id="' . esc_attr( $array_value['id'] ) . '" class="kiwi-switch-input" type="checkbox" name="' . esc_attr( $this->settings_field ) . '[' . esc_attr( $array_value['id'] ) . ']' . '" value="1"' . esc_attr( $checked ) . '>';
 			$output .= '<span class="kiwi-switch-label" data-on="' . __( 'On', 'kiwi-social-share' ) . '" data-off="' . __( 'Off', 'kiwi-social-share' ) . '"></span>';
 			$output .= '<span class="kiwi-switch-handle"></span>';
 			$output .= '</label>';

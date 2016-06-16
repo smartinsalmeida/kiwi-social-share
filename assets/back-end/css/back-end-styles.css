@@ -2,7 +2,7 @@
 .wp-core-ui .notice.is-dismissible {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
-    max-width: 1050px;
+    max-width: 1000px;
 }
 
 
@@ -68,24 +68,25 @@
     top: 0;
     right: 0
 }
-
+	.kiwi-wrap .kiwi-badge:before {
+		font-family: 'Dashicons';
+		content: '\f240';
+		font-size: 72px;
+		top: 35px;
+		position: relative;
+	}
     .kiwi-wrap .kiwi-badge {
-        background: url('../images/kiwi-logo.png') center 15px no-repeat #38cb87;
-        -webkit-background-size: 80px 80px;
-        background-size: 60px 60px;
+	    background-color: #38cb87;
         color: #fff;
-        font-size: 14px;
         text-align: center;
-        font-weight: 600;
         margin: 5px 0 0;
-        padding-top: 0px;
+        padding-top: 0;
         height: 120px;
         display: inline-block;
         width: 120px;
         text-rendering: optimizeLegibility;
         -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
         box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-        background-color: #38cb87;
     }
 
     .kiwi-wrap .kiwi-badge span {
@@ -149,7 +150,7 @@
         min-height: 35px;
         border: 1px solid #e7e9ee;
         text-indent: 5px;
-        box-shadow: inset 1px 1.7px 5px rgba(0, 0, 0, 0.07);
+        box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.07);
         border-radius: 5px;
     }
 
@@ -162,7 +163,7 @@
     .kiwi-form-wrapper-right select {
         border-radius: 5px;
         width: 50%;
-        box-shadow: inset 1px 1.7px 5px rgba(0, 0, 0, 0.07);
+        box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.07);
     }
 
 /**
@@ -350,6 +351,7 @@ fieldset.kiwi-checkbox-sortable-wrapper .kiwi-switch {
 }
 
 fieldset.kiwi-checkbox-sortable-wrapper {
+
     background-color: #fafdfe;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -357,6 +359,15 @@ fieldset.kiwi-checkbox-sortable-wrapper {
     margin: 3px auto;
     border: 1px solid #e5e5e5;
 }
+
+fieldset.kiwi-checkbox-sortable-wrapper:hover { cursor: move; }
+
+	fieldset.kiwi-checkbox-sortable-wrapper.kiwi-sortable-disabled {opacity: .5; }
+	fieldset.kiwi-checkbox-sortable-wrapper.kiwi-sortable-disabled span img {
+		-wekbit-filter: grayscale(100%);
+		filter: grayscale(100%);
+	}
+
 
     fieldset.kiwi-checkbox-sortable-wrapper .kiwi-sortable-form-label {
         margin-right: 0;
@@ -377,18 +388,11 @@ fieldset.kiwi-checkbox-sortable-wrapper {
 	        display: inline-block;
 	        position: relative;
 	        top: 7px;
-            filter: grayscale(100%);
-            -webkit-filter: grayscale(100%);
-	         opacity: .5;
-
         }
-            .kiwi-sortable-form-label span.facebook { background-image: url('../images/fb.png'); }
-            .kiwi-sortable-form-label span.twitter { background-image: url('../images/twitter.png'); }
-            .kiwi-sortable-form-label span.linkedin { background-image: url('../images/linkedin.png'); }
-            .kiwi-sortable-form-label span.pinterest { background-image: url('../images/pinterest.png'); }
-            .kiwi-sortable-form-label span.reddit { background-image: url('../images/reddit.png'); }
-            .kiwi-sortable-form-label span.email { background-image: url('../images/email.png'); }
-            .kiwi-sortable-form-label span.google.plus { background-image: url('../images/google+.png'); }
+             .kiwi-sortable-form-label span img {
+	            max-width: 26px;
+	            height:auto;
+            }
 
 
     .kiwi-checkbox-sortable-placeholder {
@@ -409,9 +413,7 @@ fieldset.kiwi-checkbox-sortable-wrapper {
         background: url('../images/sortable-helper.png') center center no-repeat;
     }
 
-    fieldset.kiwi-checkbox-sortable-wrapper .kiwi-sortable-helper:hover {
-        cursor: move;
-    }
+
 /**
 ////////////////////////////////////////
 *   END Sortable Checkboxes Field Type
@@ -427,11 +429,8 @@ fieldset.kiwi-checkbox-sortable-wrapper {
 
 .kiwi-field-wrapper .kiwi-radio-img-field img {
     border-radius: 5px;
-<<<<<<< HEAD
     max-width: 100%;
-    height; auto;
-=======
->>>>>>> origin/master
+    height: auto;
 }
 
 /* Field Type: Radio - Image */

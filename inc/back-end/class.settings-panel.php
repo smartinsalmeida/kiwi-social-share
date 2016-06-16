@@ -62,7 +62,6 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			}
 		}
 
-<<<<<<< HEAD
 		// before we return the $defaults_array, let's also make sure we save our structure version into the DB as well
 		if ( empty( $defaults['kiwi-structure-version'] ) ) {
 			if ( empty( $this->get_option_value( 'kiwi-structure-version' ) ) ) {
@@ -70,8 +69,6 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			}
 		}
 
-=======
->>>>>>> origin/master
 		return $defaults;
 	}
 
@@ -100,7 +97,8 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			array(                  // callback function to render the options
 			                        $this,
 			                        'render_settings',
-			), KIWI__PLUGINS_URL . 'assets/back-end/images/kiwi-menu-icon.png'  // icon
+			),
+			'dashicons-share-alt'  // icon
 		);
 	}
 
@@ -178,6 +176,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 						'title' => __( ' Facebook', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
 						'std'   => 1,
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/facebook-icon.png',
 						'id'    => 'kiwi-enable-facebook',
 					),
 
@@ -185,6 +184,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 						'title' => __( ' Twitter', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
 						'std'   => 1,
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/twitter-icon.png',
 						'id'    => 'kiwi-enable-twitter',
 					),
 
@@ -192,6 +192,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 						'title' => __( ' Pinterest', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
 						'std'   => 1,
+						'icon' => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/pinterest-icon.png',
 						'id'    => 'kiwi-enable-pinterest',
 					),
 
@@ -199,39 +200,31 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 						'title' => __( ' LinkedIN', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
 						'std'   => 1,
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/linkedin-icon.png',
 						'id'    => 'kiwi-enable-linkedin',
 					),
 
 					'kiwi-enable-reddit' => array(
 						'title' => __( 'Reddit', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-<<<<<<< HEAD
 						'std'   => 1,
-=======
-						'std'   => 1,  
->>>>>>> origin/master
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/reddit-icon.png',
 						'id'    => 'kiwi-enable-reddit',
 					),
 
 					'kiwi-enable-google-plus' => array(
 						'title' => __( ' Google Plus', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-<<<<<<< HEAD
 						'std'   => 1,
-=======
-						'std'   => 1,  
->>>>>>> origin/master
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/google-plus-icon.png',
 						'id'    => 'kiwi-enable-google-plus',
 					),
 
 					'kiwi-enable-email' => array(
 						'title' => __( ' Email', 'kiwi-social-share' ),
 						'type'  => 'sortable-toggle',
-<<<<<<< HEAD
 						'std'   => 1,
-=======
-						'std'   => 1, 
->>>>>>> origin/master
+						'icon'  => KIWI__PLUGINS_URL . '/assets/back-end/images/social-icons/email-icon.png',
 						'id'    => 'kiwi-enable-email',
 					),
 
@@ -253,22 +246,14 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 			array(
 				'title' => __( ' Posts', 'kiwi-social-share' ),
 				'type'  => 'toggle',
-<<<<<<< HEAD
 				'std'   => 1,
-=======
-				'std'   => 1, 
->>>>>>> origin/master
 				'id'    => 'kiwi-enable-on-posts',
 			),
 
 			array(
 				'title' => __( ' Pages', 'kiwi-social-share' ),
 				'type'  => 'toggle',
-<<<<<<< HEAD
 				'std'   => 0,
-=======
-				'std'   => 0, 
->>>>>>> origin/master
 				'id'    => 'kiwi-enable-on-pages',
 			),
 
@@ -282,7 +267,7 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 
 			array(
 				'title'   => __( 'Enable on:', 'kiwi-social-share' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'id'      => 'kiwi-enable-share-position',
 				'std'     => 'after-posts',
 				'options' => array(
@@ -474,12 +459,8 @@ class Kiwi_Settings_Page extends Kiwi_Plugin_Utilities {
 	/**
 	 * Function that calls the rendering engine
 	 *
-<<<<<<< HEAD
 	 * @param   array $args Each array entry defiend in the kiwi_settings_fields() is passed as a parameter to this
 	 *                      function
-=======
-	 * @param   array $args Each array entry defiend in the kiwi_settings_fields() is passed as a parameter to this function
->>>>>>> origin/master
 	 *
 	 * @since   1.0.0
 	 */
