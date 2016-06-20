@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: cristian.raiber, colorlib
+Contributors: cristian.raiber, Silkalns
 Tags: Facebook, facebook connect, facebook like, facebook share, facebook share icon, floating buttons, floating share, floating share icons, follow, google, Google Login, google plus, icons, increase shares, linkedin, linkedin share, media, page, pinterest, pinterest button, pinterest share, plugin, post to social networks, Reddit, reddit share, reddit sharing, Share, share button, share buttons, share counter, share icons, share links, share page, share post, sharebar, sharing, sharing icons, social, social app, social buttons, social comment, social comment facebook, social connect, social floating icons, social follow, social icon, social icons, social media, social media app, social media buttons, Social Media Plugins, social media share, social media sharing, social media tools, social network share, Social Plugins, social provider, social share, Social Share Buttons, social share icon, social share icons, social sharing, social sharing icons, social widget, stumbleupon sharing, tumblr share, tumblr sharing, twitter, twitter share, woocommerce, woocommerce connect, woocommerce sharing, yahoo
 Requires at least: 3.8
 Tested up to: 4.5.2
