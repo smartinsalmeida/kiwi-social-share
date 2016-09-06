@@ -123,7 +123,7 @@ class Kiwi_Render_Share_Bar extends Kiwi_Plugin_Utilities {
 			// get enabled social networks
 			$kiwi_display_fb          = parent::get_option_value( 'kiwi-enable-facebook' );
 			$kiwi_display_twitter     = parent::get_option_value( 'kiwi-enable-twitter' );
-			$kiwi_display_google_plus = parent::get_option_value( 'kiwi-enable-google_plus' );
+			$kiwi_display_google_plus = parent::get_option_value( 'kiwi-enable-google-plus' );
 			$kiwi_display_linkedin    = parent::get_option_value( 'kiwi-enable-linkedin' );
 			$kiwi_display_pinterest   = parent::get_option_value( 'kiwi-enable-pinterest' );
 			$kiwi_display_reddit      = parent::get_option_value( 'kiwi-enable-reddit' );
